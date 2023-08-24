@@ -43,6 +43,16 @@ namespace WebApplication1.Repository
             List<Lesson> res = _DbContext.Lessons.ToList().Except(l).ToList();
             return res;
         }
-
+        public List<lessonMode> GetAllLessonModel()
+        {
+            var res = _DbContext.Lessons.OrderBy(l => l.Tittle).Select(l => new lessonMode
+            {
+                Tittle = l.Tittle,
+                Course = l.Course,
+                ProfessorName = l.Professor.Name + " " + l.Professor.Family,
+                StudentLenth = l.Students.Count()
+            }).ToList();
+            return res;
+        }
     }
 }

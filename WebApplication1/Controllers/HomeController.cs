@@ -31,7 +31,10 @@ namespace WebApplication1.Controllers
             return View(_studentRepository.DontGetLesson(id));
         }
 
-
+        public IActionResult Lessons()
+        {
+            return View(_studentRepository.GetAllLessonModel());
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

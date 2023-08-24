@@ -7,5 +7,6 @@ namespace WebApplication1.Repository
         List<StudentModel> GetAll();
         List<StudentModel> GetAllByState();
         List<Lesson> DontGetLesson(int id);
+        List<lessonMode> GetAllLessonModel();
     }
 }
