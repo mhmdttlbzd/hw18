@@ -1,0 +1,12 @@
+﻿@model IEnumerable<WebApplication1.Models.Lesson>
+
+
+<ol>
+    @foreach (var item in Model)
+    {
+        <li>
+            @item.Tittle
+        </li>
+    }
+
+</ol>

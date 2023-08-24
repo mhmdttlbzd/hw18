@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WebApplication1.Models.StudentModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<a class="btn btn-sm btn-dark mb-2" asp-action="Index" asp-route-Order="true">Show order by state</a>
+
+<table class="table" border="1">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Addresse)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Addresse)
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-success" onclick="Show('lesson-@item.id')">ShowLessons</a> |
+                    <a class="btn btn-sm btn-info" onclick="Show('professor-@item.id')">ShowProfessor</a> |
+                    <a class="btn btn-sm btn-danger" asp-action="NotHaveLessons" asp-route-id="@item.id">Show not have lessons</a>
+                </td>
+
+            </tr>
+            <tr id="lesson-@item.id" class="d-hidden">
+                <td>
+                    @foreach (var i in item.Lessons)
+                    {
+                        <p class="text-danger">@i</p>
+                    }
+                </td>
+            </tr>
+            <tr id="professor-@item.id" class="d-hidden">
+                <td>
+                    @foreach (var i in item.Professors)
+                    {
+                        <p class="text-danger">@i</p>
+                    }
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
